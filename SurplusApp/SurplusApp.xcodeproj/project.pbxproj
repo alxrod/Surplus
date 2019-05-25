@@ -12,9 +12,15 @@
 		B44D40932299A4CE003A4178 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B44D40912299A4CE003A4178 /* Main.storyboard */; };
 		B44D40952299A4D1003A4178 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B44D40942299A4D1003A4178 /* Assets.xcassets */; };
 		B44D40982299A4D1003A4178 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B44D40962299A4D1003A4178 /* LaunchScreen.storyboard */; };
+		B44D40A42299ADBD003A4178 /* PlaidController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D40A32299ADBD003A4178 /* PlaidController.swift */; };
+		B44D40A82299AE0A003A4178 /* secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D40A72299AE0A003A4178 /* secrets.swift */; };
+		FE4F78117B730CBA57F6C124 /* Pods_SurplusApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7314C372E6488A485CBB080C /* Pods_SurplusApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1291116916C87BD3B5F7C39E /* Pods-SurplusApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SurplusApp.release.xcconfig"; path = "Target Support Files/Pods-SurplusApp/Pods-SurplusApp.release.xcconfig"; sourceTree = "<group>"; };
+		1524BD1119D63CF3A5AEBA8F /* Pods-SurplusApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SurplusApp.debug.xcconfig"; path = "Target Support Files/Pods-SurplusApp/Pods-SurplusApp.debug.xcconfig"; sourceTree = "<group>"; };
+		7314C372E6488A485CBB080C /* Pods_SurplusApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SurplusApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B44D408A2299A4CD003A4178 /* SurplusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SurplusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B44D408D2299A4CD003A4178 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B44D408F2299A4CD003A4178 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +28,8 @@
 		B44D40942299A4D1003A4178 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B44D40972299A4D1003A4178 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B44D40992299A4D1003A4178 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B44D40A32299ADBD003A4178 /* PlaidController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlaidController.swift; path = /Users/alexrodriguez/Desktop/Github/Surplus/SurplusApp/SurplusApp/PlaidController.swift; sourceTree = "<absolute>"; };
+		B44D40A72299AE0A003A4178 /* secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secrets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE4F78117B730CBA57F6C124 /* Pods_SurplusApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2AFD1B0B6D66B0C81D7B101C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7314C372E6488A485CBB080C /* Pods_SurplusApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		98C3F613E907A284BFF3F646 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1524BD1119D63CF3A5AEBA8F /* Pods-SurplusApp.debug.xcconfig */,
+				1291116916C87BD3B5F7C39E /* Pods-SurplusApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B44D40812299A4CD003A4178 = {
 			isa = PBXGroup;
 			children = (
 				B44D408C2299A4CD003A4178 /* SurplusApp */,
 				B44D408B2299A4CD003A4178 /* Products */,
+				98C3F613E907A284BFF3F646 /* Pods */,
+				2AFD1B0B6D66B0C81D7B101C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +82,8 @@
 		B44D408C2299A4CD003A4178 /* SurplusApp */ = {
 			isa = PBXGroup;
 			children = (
+				B44D40A32299ADBD003A4178 /* PlaidController.swift */,
+				B44D40A72299AE0A003A4178 /* secrets.swift */,
 				B44D408D2299A4CD003A4178 /* AppDelegate.swift */,
 				B44D408F2299A4CD003A4178 /* ViewController.swift */,
 				B44D40912299A4CE003A4178 /* Main.storyboard */,
@@ -71,9 +101,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B44D409C2299A4D1003A4178 /* Build configuration list for PBXNativeTarget "SurplusApp" */;
 			buildPhases = (
+				D017CF218FC921B67241B25A /* [CP] Check Pods Manifest.lock */,
 				B44D40862299A4CD003A4178 /* Sources */,
 				B44D40872299A4CD003A4178 /* Frameworks */,
 				B44D40882299A4CD003A4178 /* Resources */,
+				E61F2D9663B6BAA6ECA73FD6 /* [CP] Embed Pods Frameworks */,
+				F33A966E679ECFCB4AD5DE74 /* [CP] Copy Pods Resources */,
+				B44D40A92299AFED003A4178 /* Prepare for Distribution */,
 			);
 			buildRules = (
 			);
@@ -130,11 +164,110 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B44D40A92299AFED003A4178 /* Prepare for Distribution */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Prepare for Distribution";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nLINK_ROOT=${PODS_ROOT:+$PODS_ROOT/Plaid/ios}\ncp /Users/alexrodriguez/Desktop/Github/Surplus/SurplusApp/LinkKit.framework/prepare_for_distribution.sh \"${CODESIGNING_FOLDER_PATH}\"/Frameworks/LinkKit.framework/prepare_for_distribution.sh\n\"${CODESIGNING_FOLDER_PATH}\"/Frameworks/LinkKit.framework/prepare_for_distribution.sh\n";
+		};
+		D017CF218FC921B67241B25A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SurplusApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E61F2D9663B6BAA6ECA73FD6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SurplusApp/Pods-SurplusApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${PODS_ROOT}/Plaid/ios/LinkKit.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LinkKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SurplusApp/Pods-SurplusApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F33A966E679ECFCB4AD5DE74 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SurplusApp/Pods-SurplusApp-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SurplusApp/Pods-SurplusApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B44D40862299A4CD003A4178 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B44D40A42299ADBD003A4178 /* PlaidController.swift in Sources */,
+				B44D40A82299AE0A003A4178 /* secrets.swift in Sources */,
 				B44D40902299A4CD003A4178 /* ViewController.swift in Sources */,
 				B44D408E2299A4CD003A4178 /* AppDelegate.swift in Sources */,
 			);
@@ -280,6 +413,7 @@
 		};
 		B44D409D2299A4D1003A4178 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1524BD1119D63CF3A5AEBA8F /* Pods-SurplusApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +432,7 @@
 		};
 		B44D409E2299A4D1003A4178 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1291116916C87BD3B5F7C39E /* Pods-SurplusApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
