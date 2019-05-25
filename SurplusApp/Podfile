@@ -11,5 +11,6 @@ target 'SurplusApp' do
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
   pod 'Plaid'
+  pod 'Firebase/Database'
 
 end

@@ -12,8 +12,8 @@
 		B44D40932299A4CE003A4178 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B44D40912299A4CE003A4178 /* Main.storyboard */; };
 		B44D40952299A4D1003A4178 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B44D40942299A4D1003A4178 /* Assets.xcassets */; };
 		B44D40982299A4D1003A4178 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B44D40962299A4D1003A4178 /* LaunchScreen.storyboard */; };
-		B44D40A42299ADBD003A4178 /* PlaidController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D40A32299ADBD003A4178 /* PlaidController.swift */; };
-		B44D40A82299AE0A003A4178 /* secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D40A72299AE0A003A4178 /* secrets.swift */; };
+		C26DF3592299B50E000F4BEB /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26DF3582299B50E000F4BEB /* FirebaseController.swift */; };
+		C26DF35B2299C561000F4BEB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C26DF35A2299C561000F4BEB /* GoogleService-Info.plist */; };
 		FE4F78117B730CBA57F6C124 /* Pods_SurplusApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7314C372E6488A485CBB080C /* Pods_SurplusApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,8 +28,8 @@
 		B44D40942299A4D1003A4178 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B44D40972299A4D1003A4178 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B44D40992299A4D1003A4178 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B44D40A32299ADBD003A4178 /* PlaidController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlaidController.swift; path = /Users/alexrodriguez/Desktop/Github/Surplus/SurplusApp/SurplusApp/PlaidController.swift; sourceTree = "<absolute>"; };
-		B44D40A72299AE0A003A4178 /* secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secrets.swift; sourceTree = "<group>"; };
+		C26DF3582299B50E000F4BEB /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
+		C26DF35A2299C561000F4BEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,13 +82,13 @@
 		B44D408C2299A4CD003A4178 /* SurplusApp */ = {
 			isa = PBXGroup;
 			children = (
-				B44D40A32299ADBD003A4178 /* PlaidController.swift */,
-				B44D40A72299AE0A003A4178 /* secrets.swift */,
+				C26DF3582299B50E000F4BEB /* FirebaseController.swift */,
 				B44D408D2299A4CD003A4178 /* AppDelegate.swift */,
 				B44D408F2299A4CD003A4178 /* ViewController.swift */,
 				B44D40912299A4CE003A4178 /* Main.storyboard */,
 				B44D40942299A4D1003A4178 /* Assets.xcassets */,
 				B44D40962299A4D1003A4178 /* LaunchScreen.storyboard */,
+				C26DF35A2299C561000F4BEB /* GoogleService-Info.plist */,
 				B44D40992299A4D1003A4178 /* Info.plist */,
 			);
 			path = SurplusApp;
@@ -157,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B44D40982299A4D1003A4178 /* LaunchScreen.storyboard in Resources */,
+				C26DF35B2299C561000F4BEB /* GoogleService-Info.plist in Resources */,
 				B44D40952299A4D1003A4178 /* Assets.xcassets in Resources */,
 				B44D40932299A4CE003A4178 /* Main.storyboard in Resources */,
 			);
@@ -219,6 +220,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${PODS_ROOT}/Plaid/ios/LinkKit.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -230,6 +232,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LinkKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,8 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B44D40A42299ADBD003A4178 /* PlaidController.swift in Sources */,
-				B44D40A82299AE0A003A4178 /* secrets.swift in Sources */,
+				C26DF3592299B50E000F4BEB /* FirebaseController.swift in Sources */,
 				B44D40902299A4CD003A4178 /* ViewController.swift in Sources */,
 				B44D408E2299A4CD003A4178 /* AppDelegate.swift in Sources */,
 			);

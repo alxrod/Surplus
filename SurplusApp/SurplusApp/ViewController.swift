@@ -13,6 +13,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let fb = FirebaseController()
+//        fb.createProject( charityID: "warriors", summary: "Helpful", description: "Shit", imageURL: "https", totalGoal: 210)
+//        fb.convertProject(projectID: "ankner")
+//        fb.getIsBacked(projectID: "project") { (backers) in
+//            print(backers!)
+//        }
     }
 
 
