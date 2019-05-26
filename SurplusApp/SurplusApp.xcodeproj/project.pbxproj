@@ -14,6 +14,8 @@
 		B44D40982299A4D1003A4178 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B44D40962299A4D1003A4178 /* LaunchScreen.storyboard */; };
 		B44D40A42299ADBD003A4178 /* PlaidController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D40A32299ADBD003A4178 /* PlaidController.swift */; };
 		B44D40A82299AE0A003A4178 /* secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D40A72299AE0A003A4178 /* secrets.swift */; };
+		B44D40AB2299F87B003A4178 /* StripeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D40AA2299F87B003A4178 /* StripeController.swift */; };
+		B44D40AD229A0A72003A4178 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B44D40AC229A0A72003A4178 /* GoogleService-Info.plist */; };
 		FE4F78117B730CBA57F6C124 /* Pods_SurplusApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7314C372E6488A485CBB080C /* Pods_SurplusApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +32,8 @@
 		B44D40992299A4D1003A4178 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B44D40A32299ADBD003A4178 /* PlaidController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlaidController.swift; path = /Users/alexrodriguez/Desktop/Github/Surplus/SurplusApp/SurplusApp/PlaidController.swift; sourceTree = "<absolute>"; };
 		B44D40A72299AE0A003A4178 /* secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secrets.swift; sourceTree = "<group>"; };
+		B44D40AA2299F87B003A4178 /* StripeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeController.swift; sourceTree = "<group>"; };
+		B44D40AC229A0A72003A4178 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,9 +90,11 @@
 				B44D40A72299AE0A003A4178 /* secrets.swift */,
 				B44D408D2299A4CD003A4178 /* AppDelegate.swift */,
 				B44D408F2299A4CD003A4178 /* ViewController.swift */,
+				B44D40AA2299F87B003A4178 /* StripeController.swift */,
 				B44D40912299A4CE003A4178 /* Main.storyboard */,
 				B44D40942299A4D1003A4178 /* Assets.xcassets */,
 				B44D40962299A4D1003A4178 /* LaunchScreen.storyboard */,
+				B44D40AC229A0A72003A4178 /* GoogleService-Info.plist */,
 				B44D40992299A4D1003A4178 /* Info.plist */,
 			);
 			path = SurplusApp;
@@ -157,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B44D40982299A4D1003A4178 /* LaunchScreen.storyboard in Resources */,
+				B44D40AD229A0A72003A4178 /* GoogleService-Info.plist in Resources */,
 				B44D40952299A4D1003A4178 /* Assets.xcassets in Resources */,
 				B44D40932299A4CE003A4178 /* Main.storyboard in Resources */,
 			);
@@ -181,7 +188,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nLINK_ROOT=${PODS_ROOT:+$PODS_ROOT/Plaid/ios}\ncp /Users/alexrodriguez/Desktop/Github/Surplus/SurplusApp/LinkKit.framework/prepare_for_distribution.sh \"${CODESIGNING_FOLDER_PATH}\"/Frameworks/LinkKit.framework/prepare_for_distribution.sh\n\"${CODESIGNING_FOLDER_PATH}\"/Frameworks/LinkKit.framework/prepare_for_distribution.sh\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nLINK_ROOT=${PODS_ROOT:+$PODS_ROOT/Plaid/ios}\ncp \"${LINK_ROOT:-/Users/alexrodriguez/Desktop/Github/Surplus/SurplusApp}\"/LinkKit.framework/prepare_for_distribution.sh \"${CODESIGNING_FOLDER_PATH}\"/Frameworks/LinkKit.framework/prepare_for_distribution.sh\n\"${CODESIGNING_FOLDER_PATH}\"/Frameworks/LinkKit.framework/prepare_for_distribution.sh\n";
 		};
 		D017CF218FC921B67241B25A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -219,6 +226,8 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${PODS_ROOT}/Plaid/ios/LinkKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -230,6 +239,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LinkKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +280,7 @@
 				B44D40A42299ADBD003A4178 /* PlaidController.swift in Sources */,
 				B44D40A82299AE0A003A4178 /* secrets.swift in Sources */,
 				B44D40902299A4CD003A4178 /* ViewController.swift in Sources */,
+				B44D40AB2299F87B003A4178 /* StripeController.swift in Sources */,
 				B44D408E2299A4CD003A4178 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

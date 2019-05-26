@@ -8,6 +8,9 @@ PODS:
     - FirebaseAnalytics (= 6.0.0)
   - Firebase/CoreOnly (6.0.0):
     - FirebaseCore (= 6.0.0)
+  - Firebase/Database (6.0.0):
+    - Firebase/CoreOnly
+    - FirebaseDatabase (~> 6.0.0)
   - FirebaseAnalytics (6.0.0):
     - FirebaseCore (~> 6.0)
     - FirebaseInstanceID (~> 4.0)
@@ -27,6 +30,10 @@ PODS:
   - FirebaseCore (6.0.0):
     - GoogleUtilities/Environment (~> 6.0)
     - GoogleUtilities/Logger (~> 6.0)
+  - FirebaseDatabase (6.0.0):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.0)
+    - leveldb-library (~> 1.18)
   - FirebaseInstanceID (4.0.0):
     - FirebaseCore (~> 6.0)
     - GoogleUtilities/Environment (~> 6.0)
@@ -68,19 +75,23 @@ PODS:
   - GoogleUtilities/UserDefaults (6.1.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.2)
+  - leveldb-library (1.20)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Plaid (1.1.18)
+  - Stripe (15.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-beta.5)
   - Firebase/Auth
   - Firebase/Core
+  - Firebase/Database
   - GoogleSignIn
   - Plaid
+  - Stripe
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -90,14 +101,17 @@ SPEC REPOS:
     - FirebaseAuth
     - FirebaseAuthInterop
     - FirebaseCore
+    - FirebaseDatabase
     - FirebaseInstanceID
     - GoogleAppMeasurement
     - GoogleSignIn
     - GoogleToolboxForMac
     - GoogleUtilities
     - GTMSessionFetcher
+    - leveldb-library
     - nanopb
     - Plaid
+    - Stripe
 
 SPEC CHECKSUMS:
   Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
@@ -106,15 +120,18 @@ SPEC CHECKSUMS:
   FirebaseAuth: efc72b0f6fe075d2a6de8d81a6d9de83ef2b47eb
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
   FirebaseCore: e38f025287b413255a53acc1945d048a112047f7
+  FirebaseDatabase: f48e067716864be2b855cf716b927ef375d6cfa0
   FirebaseInstanceID: 0e0348a3c00a734fa376a070f5ad4533ad975cb5
   GoogleAppMeasurement: 7f028ea162b72c8f326daec74afc95d94f7a47d6
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
   GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
   GoogleUtilities: 84df567c76ca84f67b7bb40e769fdd4acc746a10
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
+  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Plaid: 88717a71549ca2d12f4cfc101888c94472c10022
+  Stripe: 2c4d0a88817361a102886315ff452d90f65e898b
 
-PODFILE CHECKSUM: 26753ba0a4d3771c0b19f3b9fd62631741863d15
+PODFILE CHECKSUM: 87bd1874de85b140cdcc1278d8fd560ac8a33ffe
 
 COCOAPODS: 1.6.2
