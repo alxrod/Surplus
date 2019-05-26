@@ -16,7 +16,6 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        self.tabBarController?.tabBar.isHidden = true
     
         // Do any additional setup after loading the view.
     }
@@ -31,7 +30,8 @@ class LogInViewController: UIViewController {
     @IBAction func logInClicked(_ sender: Any) {
         let authenticated = true
         if (authenticated == true) {
-            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CurrentView") as? CurrentViewController else {return}
+            print("hello?")
+            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabBar") as? MainTabBarController else {return}
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

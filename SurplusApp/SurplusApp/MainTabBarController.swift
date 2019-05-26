@@ -1,5 +1,5 @@
 //
-//  CurrentViewController.swift
+//  MainTabBarViewController.swift
 //  SurplusApp
 //
 //  Created by Alex Rodriguez on 5/25/19.
@@ -8,21 +8,12 @@
 
 import UIKit
 
-class CurrentViewController: UIViewController {
+class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setHidesBackButton(true, animated: false)
-//        self.tabBarController?.addChild(<#T##childController: UIViewController##UIViewController#>)
-        print (self.tabBarController)
 
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-//        self.tabBarController?.tabBar.isHidden = false
     }
     
 

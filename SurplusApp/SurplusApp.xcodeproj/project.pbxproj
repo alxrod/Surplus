@@ -23,6 +23,7 @@
 		B44D40B9229A18D0003A4178 /* ArchiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D40B8229A18D0003A4178 /* ArchiveTableViewController.swift */; };
 		B44D40BD229A2290003A4178 /* UiColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D40BC229A2290003A4178 /* UiColorExtension.swift */; };
 		B44D40C3229A2AB8003A4178 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D40C2229A2AB8003A4178 /* FirebaseController.swift */; };
+		B44D40C7229A3023003A4178 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D40C6229A3023003A4178 /* MainTabBarController.swift */; };
 		FE4F78117B730CBA57F6C124 /* Pods_SurplusApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7314C372E6488A485CBB080C /* Pods_SurplusApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		B44D40B8229A18D0003A4178 /* ArchiveTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTableViewController.swift; sourceTree = "<group>"; };
 		B44D40BC229A2290003A4178 /* UiColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UiColorExtension.swift; path = /Users/alexrodriguez/Desktop/Github/Surplus/SurplusApp/SurplusApp/UiColorExtension.swift; sourceTree = "<absolute>"; };
 		B44D40C2229A2AB8003A4178 /* FirebaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
+		B44D40C6229A3023003A4178 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				B44D408F2299A4CD003A4178 /* ViewController.swift */,
 				B44D40AA2299F87B003A4178 /* StripeController.swift */,
 				B44D40912299A4CE003A4178 /* Main.storyboard */,
+				B44D40C6229A3023003A4178 /* MainTabBarController.swift */,
 				B44D40B8229A18D0003A4178 /* ArchiveTableViewController.swift */,
 				B44D40B6229A173B003A4178 /* AnalyticsViewController.swift */,
 				B44D40B4229A16BA003A4178 /* LogInViewController.swift */,
@@ -305,6 +308,7 @@
 				B44D40A82299AE0A003A4178 /* secrets.swift in Sources */,
 				B44D40902299A4CD003A4178 /* ViewController.swift in Sources */,
 				B44D40C3229A2AB8003A4178 /* FirebaseController.swift in Sources */,
+				B44D40C7229A3023003A4178 /* MainTabBarController.swift in Sources */,
 				B44D40BD229A2290003A4178 /* UiColorExtension.swift in Sources */,
 				B44D40AB2299F87B003A4178 /* StripeController.swift in Sources */,
 				B44D40B7229A173B003A4178 /* AnalyticsViewController.swift in Sources */,

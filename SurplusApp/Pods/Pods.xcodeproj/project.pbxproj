@@ -868,6 +868,7 @@
 		B3B5AF16DA603574E18F202B85CE1A8C /* stp_card_discover@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0EADB4E58E3FE759CA5328FC70C516 /* stp_card_discover@3x.png */; };
 		B3D8184F889D79EA6E37B88FA70CED1B /* GULNetworkURLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D54658961F042419319682A32F79DC5 /* GULNetworkURLSession.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B3F60459F07BBCA1FDC5D4381725624C /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469233EDEE4B075E690907DBE33D467F /* NetworkReachabilityManager.swift */; };
+		B44D40C5229A2F35003A4178 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D40C4229A2F35003A4178 /* MainTabBarController.swift */; };
 		B4639087D300D2E2EDCE82517B869639 /* STPSourceParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7E5FF5CA1BDA5681B4C71B8B13366 /* STPSourceParams.m */; };
 		B508436C8C25CE8656F8F83ED516A375 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F9A2A8688AF659987479BC668F17806 /* GTMDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B52351B533E2EEE612792D7CABA4B37C /* FIRAuthRPCRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F5C8421F67262032A5126600A6E7E43C /* FIRAuthRPCRequest.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -2346,6 +2347,7 @@
 		B3F8292D89515192701C1464F1C4A368 /* STPStringUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPStringUtils.h; path = Stripe/STPStringUtils.h; sourceTree = "<group>"; };
 		B42527B8234D854C1243C122864796C8 /* STPDelegateProxy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPDelegateProxy.m; path = Stripe/STPDelegateProxy.m; sourceTree = "<group>"; };
 		B44648670633FA16B089DC00150E590F /* FStorageEngine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FStorageEngine.h; path = Firebase/Database/Persistence/FStorageEngine.h; sourceTree = "<group>"; };
+		B44D40C4229A2F35003A4178 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		B4728859BAAEF3763B040B31C67EF3F2 /* LinkKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LinkKit.framework; path = ios/LinkKit.framework; sourceTree = "<group>"; };
 		B4AC068ADCA8EAA1BB5C3CA6B96F7BD4 /* FAtomicNumber.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FAtomicNumber.h; path = Firebase/Database/Utilities/FAtomicNumber.h; sourceTree = "<group>"; };
 		B4B724A2C6FCC359F4D2B62819313749 /* STPPaymentIntentParams.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPPaymentIntentParams.h; path = Stripe/PublicHeaders/STPPaymentIntentParams.h; sourceTree = "<group>"; };
@@ -4221,6 +4223,7 @@
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
+				B44D40C4229A2F35003A4178 /* MainTabBarController.swift */,
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				F119B4A0ABE017AECEE69836596133B2 /* Frameworks */,
 				32E27C12A4B21E7D9334842FCD8247C5 /* Pods */,
@@ -5783,6 +5786,7 @@
 			files = (
 				A90D7B103972439C4CBF41649B08AAF0 /* AFError.swift in Sources */,
 				416301B99D1AC5B20335AD81F4C9D84A /* AFResult.swift in Sources */,
+				B44D40C5229A2F35003A4178 /* MainTabBarController.swift in Sources */,
 				CE1253B025D313B46AEB364DE6C7BDC7 /* Alamofire-dummy.m in Sources */,
 				B305E9D96C331E3F4B551B75B5302F87 /* Alamofire.swift in Sources */,
 				C55B4FADFF22B8AD07E58F85030CA35D /* AlamofireExtended.swift in Sources */,
