@@ -16,6 +16,9 @@
 		B44D40A82299AE0A003A4178 /* secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D40A72299AE0A003A4178 /* secrets.swift */; };
 		B44D40AB2299F87B003A4178 /* StripeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D40AA2299F87B003A4178 /* StripeController.swift */; };
 		B44D40AD229A0A72003A4178 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B44D40AC229A0A72003A4178 /* GoogleService-Info.plist */; };
+		B44D40AF229A1122003A4178 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D40AE229A1122003A4178 /* FirebaseController.swift */; };
+		B44D40B1229A11CB003A4178 /* CurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D40B0229A11CB003A4178 /* CurrentViewController.swift */; };
+		B44D40B3229A11FD003A4178 /* ExploreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D40B2229A11FD003A4178 /* ExploreTableViewController.swift */; };
 		FE4F78117B730CBA57F6C124 /* Pods_SurplusApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7314C372E6488A485CBB080C /* Pods_SurplusApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +37,9 @@
 		B44D40A72299AE0A003A4178 /* secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secrets.swift; sourceTree = "<group>"; };
 		B44D40AA2299F87B003A4178 /* StripeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeController.swift; sourceTree = "<group>"; };
 		B44D40AC229A0A72003A4178 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B44D40AE229A1122003A4178 /* FirebaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
+		B44D40B0229A11CB003A4178 /* CurrentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentViewController.swift; sourceTree = "<group>"; };
+		B44D40B2229A11FD003A4178 /* ExploreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,9 @@
 		B44D408C2299A4CD003A4178 /* SurplusApp */ = {
 			isa = PBXGroup;
 			children = (
+				B44D40AE229A1122003A4178 /* FirebaseController.swift */,
+				B44D40B0229A11CB003A4178 /* CurrentViewController.swift */,
+				B44D40B2229A11FD003A4178 /* ExploreTableViewController.swift */,
 				B44D40A32299ADBD003A4178 /* PlaidController.swift */,
 				B44D40A72299AE0A003A4178 /* secrets.swift */,
 				B44D408D2299A4CD003A4178 /* AppDelegate.swift */,
@@ -277,10 +286,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B44D40AF229A1122003A4178 /* FirebaseController.swift in Sources */,
 				B44D40A42299ADBD003A4178 /* PlaidController.swift in Sources */,
+				B44D40B3229A11FD003A4178 /* ExploreTableViewController.swift in Sources */,
 				B44D40A82299AE0A003A4178 /* secrets.swift in Sources */,
 				B44D40902299A4CD003A4178 /* ViewController.swift in Sources */,
 				B44D40AB2299F87B003A4178 /* StripeController.swift in Sources */,
+				B44D40B1229A11CB003A4178 /* CurrentViewController.swift in Sources */,
 				B44D408E2299A4CD003A4178 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
