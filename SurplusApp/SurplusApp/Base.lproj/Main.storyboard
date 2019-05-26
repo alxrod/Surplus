@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Analytics View Controller-->
+        <!--Title-->
         <scene sceneID="ry7-5G-LX3">
             <objects>
                 <viewController id="IGC-bI-h9E" customClass="AnalyticsViewController" customModule="SurplusApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,10 +20,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="QvQ-6d-9Px"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="IYU-Xu-AaK"/>
+                    <navigationItem key="navigationItem" title="Title" id="0P4-Kd-35Y"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lGL-9H-FvM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3203" y="798"/>
+            <point key="canvasLocation" x="6400" y="781"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="GBd-xX-WG9">
@@ -119,7 +122,7 @@
             </objects>
             <point key="canvasLocation" x="3376.811594202899" y="20.758928571428569"/>
         </scene>
-        <!--Current View Controller-->
+        <!--Item-->
         <scene sceneID="Ywu-aD-aFF">
             <objects>
                 <viewController id="fF6-el-epP" customClass="CurrentViewController" customModule="SurplusApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -131,12 +134,8 @@
                                 <rect key="frame" x="107" y="182" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="AVD-Tz-6WJ">
-                                <rect key="frame" x="132" y="447" width="150" height="2"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </progressView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qnP-ua-rI2">
-                                <rect key="frame" x="87" y="469" width="240" height="128"/>
+                                <rect key="frame" x="87" y="552" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -150,15 +149,39 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UTJ-2A-T9f" customClass="MultiProgressView" customModule="MultiProgressView">
+                                <rect key="frame" x="87" y="476" width="240" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="R6c-YW-jD6"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="pte-XJ-SnT"/>
                     <navigationItem key="navigationItem" id="Z9P-w0-qz7"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="progressView" destination="UTJ-2A-T9f" id="oWG-ct-vIZ"/>
+                        <outlet property="projectDescriptField" destination="qnP-ua-rI2" id="p3M-aK-KkA"/>
+                        <outlet property="projectImage" destination="lcI-jU-veb" id="O7a-DJ-ezT"/>
+                        <outlet property="projectNameField" destination="9Qj-wD-CKL" id="IFY-AG-t1a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3M-3v-Jcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6401" y="21"/>
+            <point key="canvasLocation" x="6400.0000000000009" y="20.758928571428569"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="nTY-X8-FKt">
@@ -192,7 +215,7 @@
             </objects>
             <point key="canvasLocation" x="7456" y="21"/>
         </scene>
-        <!--Archive Table View Controller-->
+        <!--Title-->
         <scene sceneID="nyc-zr-Cym">
             <objects>
                 <tableViewController id="MHx-I8-YQj" customClass="ArchiveTableViewController" customModule="SurplusApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -215,17 +238,21 @@
                             <outlet property="delegate" destination="MHx-I8-YQj" id="emb-Gj-gdL"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="QUK-GS-4K2"/>
+                    <navigationItem key="navigationItem" title="Title" id="RSr-h0-8rs"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YI8-cZ-zf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3203" y="-725"/>
+            <point key="canvasLocation" x="6400" y="-698"/>
         </scene>
         <!--Item-->
         <scene sceneID="7qW-5O-0BT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="myS-aG-8OU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="3AM-JO-xnu"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="o6v-Sp-JeJ"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ny6-HO-JjD">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -245,11 +272,14 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="3eF-hw-grz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5Lq-sy-Wmh">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="IGC-bI-h9E" kind="relationship" relationship="viewControllers" id="z5h-GM-KTu"/>
                         <segue destination="myS-aG-8OU" kind="relationship" relationship="viewControllers" id="ADH-wR-43Y"/>
+                        <segue destination="MHx-I8-YQj" kind="relationship" relationship="viewControllers" id="BFn-T0-DyG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fz6-E4-eje" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -13,5 +13,6 @@ target 'SurplusApp' do
   pod 'Stripe'
   pod 'GoogleSignIn'
   pod 'Plaid'
+  pod 'MultiProgressView'
 
 end
