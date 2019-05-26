@@ -7,44 +7,70 @@
 //
 
 import UIKit
+import Firebase
 
 class LogInViewController: UIViewController {
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
     
+    let fb = FirebaseController()
+    let defaults = UserDefaults.standard
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-    
+        
+        
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       
+        super.viewWillAppear(true)
         
-        
-        
-        
-    }
-    @IBAction func logInClicked(_ sender: Any) {
-        let authenticated = true
-        if (authenticated == true) {
-            print("hello?")
-            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabBar") as? MainTabBarController else {return}
-            self.navigationController?.pushViewController(vc, animated: true)
+        let userID = defaults.object(forKey: "userID")
+        print(userID)
+        if userID != nil{
+            self.view.isHidden = true
+            performSegue(withIdentifier: "logInSegue", sender: nil)
         }
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if (identifier == "logInSegue") {
+            guard let email = emailField.text else {return false}
+            guard let password = passwordField.text else {return false}
+            Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
+                    guard let strongSelf = self else { return }
+                    if let user = user{
+                        self?.defaults.set(user.user.uid, forKey: "userID")
+                        self?.performSegue(withIdentifier: "logInSegue", sender: nil)
+                        return
+                    }else{
+                        print(error)
+                        return
+                    }
+                    
+            }
+            
+            return false
+            
+        }
+        return true
+    }
+
+
+    
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
+

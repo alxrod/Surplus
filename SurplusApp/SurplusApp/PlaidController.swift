@@ -1,6 +1,6 @@
 //
 //  PlaidController.swift
-//  
+//
 //
 //  Created by Alex Rodriguez on 5/25/19.
 //
@@ -25,7 +25,7 @@ class PlaidController {
     func get_access_tok(public_token: String, completion: @escaping ConfServiceResponse) {
         var components = getCoreComponents()
         components.path = "/item/public_token/exchange"
-
+        
         let data = [
             "public_token": public_token,
             "client_id": client_id,
@@ -34,7 +34,7 @@ class PlaidController {
         
         let jsonData = try? JSONSerialization.data(withJSONObject: data)
         
-//        components.queryItems = [queryPubToken, queryClientId, queryDevSecret]
+        //        components.queryItems = [queryPubToken, queryClientId, queryDevSecret]
         
         guard let url = components.url else { return }
         
@@ -43,7 +43,7 @@ class PlaidController {
         urlRequest.httpMethod = "POST"
         let header = HTTPHeader(name: "Content-Type", value: "application/json")
         urlRequest.headers = [header]
-    
+        
         AF.request(urlRequest).validate(contentType: ["application/json"]).responseJSON { response in
             switch response.result {
             case let .success(value):
@@ -55,7 +55,7 @@ class PlaidController {
                     }
                 }
             case let .failure(error):
-
+                
                 completion(nil,error)
                 
             }
@@ -97,61 +97,62 @@ class PlaidController {
         
         AF.request(urlRequest).validate(contentType: ["application/json"]).responseJSON { response in
             switch response.result {
-                case let .success(value):
-                    print(value)
-                    //              if let dict = value as? Dictionary<String, Any> {
-                    var transactions: Dictionary<String, Double>
-                    transactions = [:]
+            case let .success(value):
+                print(value)
+                //              if let dict = value as? Dictionary<String, Any> {
+                var transactions: Dictionary<String, Double>
+                transactions = [:]
                 
-                    var total = 0
-                    var success = 0
-                    print("Initial Start")
-                    if let dict = value as? Dictionary<String, Any> {
-//                        print("Outer dict worked")
-                        if let transactionsJson = dict["transactions"] as? [Any] {
-//                            print("mj dict cast worked")
-                            for trans in transactionsJson {
-                                if let transaction = trans as? Dictionary<String, Any> {
-//                                    print("Small scale dict cast worked")
-                                    guard let amount = transaction["amount"] as? Double else {
-                                        print(transaction["amount"]!)
-                                        return
-                                        
-                                    }
-                                    guard let name = transaction["name"] as? String else {
-                                        print(transaction["name"])
-                                        return
-                                    }
-                                    transactions[name] = amount
-//                                    print("Far enough with \(amount)")
-                                    success+=1
+                var total = 0
+                var success = 0
+                print("Initial Start")
+                if let dict = value as? Dictionary<String, Any> {
+                    //                        print("Outer dict worked")
+                    if let transactionsJson = dict["transactions"] as? [Any] {
+                        //                            print("mj dict cast worked")
+                        for trans in transactionsJson {
+                            if let transaction = trans as? Dictionary<String, Any> {
+                                //                                    print("Small scale dict cast worked")
+                                guard let amount = transaction["amount"] as? Double else {
+                                    print(transaction["amount"]!)
+                                    return
                                     
                                 }
-                                total+=1
+                                guard let name = transaction["name"] as? String else {
+                                    print(transaction["name"])
+                                    return
+                                }
+                                transactions[name] = amount
+                                //                                    print("Far enough with \(amount)")
+                                success+=1
                                 
                             }
-    
+                            total+=1
                             
                         }
+                        
+                        
                     }
-                    
-                    print("parsing finished")
-                    print("Sucess rate \(success/total)")
-                    completion(transactions,nil)
-                
-                    //                        completion(token,nil)
-        
-                case let .failure(error):
-            
-                    completion(nil,error)
-            
                 }
+                
+                print("parsing finished")
+                print("Sucess rate \(success/total)")
+                completion(transactions,nil)
+                
+                //                        completion(token,nil)
+                
+            case let .failure(error):
+                
+                completion(nil,error)
+                
+            }
         }
     }
     
     
     
 }
+
 
 
 

@@ -102,7 +102,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="logInClicked:" destination="GRu-9B-ORU" eventType="touchUpInside" id="Sfw-bW-N5v"/>
+                                    <segue destination="Bbn-Hw-rNN" kind="show" identifier="logInSegue" id="KeF-JI-exD"/>
                                 </connections>
                             </button>
                         </subviews>
