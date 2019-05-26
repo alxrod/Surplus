@@ -9,38 +9,72 @@
 import UIKit
 
 class ArchiveTableViewController: UITableViewController {
-
+    
+    var projects = [Project]()
+    let defaults = UserDefaults.standard
+    let fc = FirebaseController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        guard let uid = defaults.object(forKey: "userID") as? String else {return}
+            print("Starting")
+            fc.getCompletedProjects(userID: uid) { (proj_ids) in
+                if let project_ids = proj_ids as? [String] {
+                    for proj_id in project_ids {
+                        print("Iterating")
+                        self.fc.getArchiveProject(projectID: proj_id) { (projectData) in
+                            print(projectData)
+                            if let proj = projectData {
+                                print("final stage")
+                                guard let name = proj["name"] as? String else {return}
+                                guard let description = proj["summary"] as? String else {return}
+                                guard let urlS = proj["imageURL"] as? String else {return}
+                                guard let url = URL(string: urlS) else {return}
+                                var newProject = Project(name: name, summary: description, image: url)
+                                print("About to append \(newProject)")
+                                self.projects.append(newProject)
+                                print("after: \(self.projects[0].name)")
+                                self.tableView.reloadData()
+                                
+                            }
+                        }
+                        
+                    }
+                
+                
+                }
+        }
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        print ("this many rows: \(projects)")
+        return projects.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        print("Hellooo?")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Project", for: indexPath) as? ProjectTableViewCell else {
+            fatalError("Unable to dequeue ProjectCell")
+        }
+        print("trying to render some cells!")
+        let project = projects[indexPath.item]
+        cell.project_name.text = project.name
+        cell.project_descript.text = project.summary
+        cell.imageView?.load(url: project.image)
+        print(cell.project_name, "predicted")
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

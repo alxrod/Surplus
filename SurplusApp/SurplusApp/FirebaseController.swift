@@ -14,6 +14,7 @@ class FirebaseController {
     
     var ref: DatabaseReference!
     let defaults = UserDefaults.standard
+    let pc = PlaidController()
 
     func createUser(email: String, password: String){
         
@@ -29,8 +30,8 @@ class FirebaseController {
                             if let userID = userID{
                                 userRef.child("\(userID)/lifetimeContrib").setValue(0)
                                 userRef.child("\(userID)/numSuccess").setValue(0)
-                                userRef.child("\(userID)/totalContrib").setValue(0)
-
+                                userRef.child("\(userID)/totalContrib").setValue(57.83)
+                                userRef.child("\(userID)/username").setValue(email)
                             }
                         }
                     }
@@ -102,6 +103,25 @@ class FirebaseController {
         })
     }
     
+    func updateUsername(userID: String, username: String){
+        let postRef = Database.database().reference(withPath: "users/\(userID)")
+        postRef.child("username").setValue(username)
+    }
+    
+    func getUsername(userID: String, completion: @escaping (String?) -> Void){
+        
+        let postRef = Database.database().reference(withPath: "users/\(userID)")
+        postRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let postDict = snapshot.value as? NSDictionary
+            let username = postDict?["username"] as? String
+            if let username = username{
+                completion(username)
+            }else{
+                completion("No  username")
+            }
+        })
+    }
+    
     func updateCompletedProjects(userID: String, projectID: String){
         let postRef = Database.database().reference(withPath: "users/\(userID)")
         postRef.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -126,10 +146,11 @@ class FirebaseController {
             if let completedProjects = completedProjects{
                 completion(completedProjects)
             }else{
-                completion(["No completed projects"])
+                return
             }
         })
     }
+
     
     func updateNumSuccess(userID: String){
         let postRef = Database.database().reference(withPath: "users/\(userID)")
@@ -389,6 +410,79 @@ class FirebaseController {
         })
     }
     
-}
+    func createCharity(name: String){
+        let charityID = UUID()
+        let charityRef = Database.database().reference(withPath: "charities/\(charityID)")
+        charityRef.child("name").setValue(name)
+    }
+    
+    func getCharityName(charityID: String, completion: @escaping (String?) -> Void){
+        
+        let postRef = Database.database().reference(withPath: "charities/\(charityID)")
+        postRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let postDict = snapshot.value as? NSDictionary
+            let projectID = postDict?["name"] as? String
+            if let projectID = projectID{
+                completion(projectID)
+            }else{
+                completion("No current name")
+            }
+        })
+    }
+    
+    func getActiveImage(projectID: String, completion: @escaping (String?) -> Void){
+        
+        let postRef = Database.database().reference(withPath: "projects/\(projectID)")
+        postRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let postDict = snapshot.value as? NSDictionary
+            let imageURL = postDict?["imageURL"] as? String
+            if let imageURL = imageURL{
+                completion(imageURL)
+            }else{
+                completion("No current image url")
+            }
+        })
+    }
+    
+    func getArchiveImage(projectID: String, completion: @escaping (String?) -> Void){
+        
+        let postRef = Database.database().reference(withPath: "archived/\(projectID)")
+        postRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let postDict = snapshot.value as? NSDictionary
+            let imageURL = postDict?["imageURL"] as? String
+            if let imageURL = imageURL{
+                completion(imageURL)
+            }else{
+                completion("No current image url")
+            }
+        })
+    }
+    
+    func getActiveProject(projectID: String, completion: @escaping (Dictionary<String, Any>?) -> Void){
+        
+        let postRef = Database.database().reference(withPath: "projects/\(projectID)")
+        postRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if  let postDict = snapshot.value as? Dictionary<String, Any> {
+                completion(postDict)
+            }else{
+                completion(nil)
+            }
+        })
+    }
+    
+    func getArchiveProject(projectID: String, completion: @escaping (Dictionary<String, Any>?) -> Void){
+        
+        let postRef = Database.database().reference(withPath: "archived/\(projectID)")
+        postRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            print("Here: \(snapshot.value)")
+            if  let postDict = snapshot.value as? Dictionary<String, Any> {
+                completion(postDict)
+            }else{
+                completion(nil)
+            }
+        })
+    }
+    
+ }
 
 

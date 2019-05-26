@@ -33,6 +33,8 @@ class CurrentViewController: UIViewController, MultiProgressViewDataSource {
     
         
         progressView.dataSource = self
+        progressView.lineCap = .round
+        progressView.cornerRadius = 6.25
         
         
         
@@ -98,13 +100,14 @@ class CurrentViewController: UIViewController, MultiProgressViewDataSource {
         let sectionView = ProgressViewSection()
         switch section {
         case 0:
-            sectionView.backgroundColor = .red
+            sectionView.backgroundColor = .cyan
         case 1:
             sectionView.backgroundColor = .blue
         default:
             break
         }
         return sectionView
+        
     }
     
     

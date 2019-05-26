@@ -10,8 +10,13 @@ import UIKit
 import LinkKit
 
 class ProfileViewController: UIViewController {
+    
+    @IBOutlet weak var userName: UILabel!
+    
+    
     let pc = PlaidController()
     let defaults = UserDefaults.standard
+    let fb = FirebaseController()
     var bankingToken: String? {
         didSet {
             guard let pub_token = bankingToken else {return}
@@ -33,7 +38,22 @@ class ProfileViewController: UIViewController {
             
             pc.get_transcations(access_token: ac_token) { (transactions, error) in
                 print("donza")
-                print(transactions)
+                if let transactions = transactions{
+                    var prices: [Double] = []
+                    for (key, value) in transactions{
+                        prices.append(value)
+                    }
+                    var sum = 0.0
+                    for price in prices{
+                        let decimal = Double(price - floor(price))
+                        let multiplier = 0.1*floor(decimal / 0.1)
+                        sum = sum + (0.1-(decimal - multiplier))
+                    }
+                    let userID = self.defaults.object(forKey: "userID") as! String?
+                    if let userID = userID{
+                        self.fb.updateTotalContrib(userID: userID, donation: Float(sum))
+                    }
+                }
             }
             
             
@@ -42,9 +62,36 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let userID = defaults.object(forKey: "userID")
+        if let userID = userID{
+            fb.getUsername(userID: userID as! String) {(username) in
+                print(username)
+                if let username = username{
+                    self.userName.text = username
+                }
+            }
+            self.userName.text = userID as! String
+        }
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func updateUsername(sender: UIButton) {
+        let userID = defaults.object(forKey: "userID")
+        if let userID = userID{
+            fb.getUsername(userID: userID as! String){(username) in
+                if let username = username{
+                    
+                }
+            }
+            
+        }
+    }
+    
+
+    @IBAction func logout(_ sender: Any) {
+        fb.signOut()
+    }
+    
     
     @IBAction func authenticateCard(_ sender: Any) {
         let linkConfiguration = PLKConfiguration(key: "a5c0d06d29cd2debdc3167acb3457d", env: .sandbox, product: [.auth, .transactions])
