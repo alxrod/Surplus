@@ -14,5 +14,6 @@ target 'SurplusApp' do
   pod 'GoogleSignIn'
   pod 'Plaid'
   pod 'MultiProgressView'
+  pod 'Kingfisher', '~> 4.0'
 
 end

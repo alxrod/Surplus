@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 class ArchiveTableViewController: UITableViewController {
     
     var projects = [Project]()
@@ -33,7 +33,7 @@ class ArchiveTableViewController: UITableViewController {
                                 guard let description = proj["summary"] as? String else {return}
                                 guard let urlS = proj["imageURL"] as? String else {return}
                                 guard let url = URL(string: urlS) else {return}
-                                var newProject = Project(name: name, summary: description, image: url)
+                                var newProject = Project(name: name, summary: description, image: url, id: proj_id)
                                 print("About to append \(newProject)")
                                 self.projects.append(newProject)
                                 print("after: \(self.projects[0].name)")
@@ -72,11 +72,40 @@ class ArchiveTableViewController: UITableViewController {
         let project = projects[indexPath.item]
         cell.project_name.text = project.name
         cell.project_descript.text = project.summary
-        cell.imageView?.load(url: project.image)
-        print(cell.project_name, "predicted")
+        
+        var x = UIImageView()
+        x.kf.setImage(with: project.image)
+        x.contentMode = UIView.ContentMode.scaleAspectFill
+        x.clipsToBounds = true
+        cell.addSubview(x)
+       
+        
+        x.translatesAutoresizingMaskIntoConstraints = false
+        x.trailingAnchor.constraint(equalTo: cell.trailingAnchor).isActive = true
+        x.topAnchor.constraint(equalTo: cell.topAnchor).isActive = true
+        x.widthAnchor.constraint(equalToConstant: 87.5).isActive = true
+        x.heightAnchor.constraint(equalToConstant: 87.5).isActive = true
+        
+        print("Hello!?? \(project.image)")
 
+        
+        
         return cell
     }
+    
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {return}
+
+        let project = projects[indexPath.item]
+        vc.project_id = project.id
+        self.navigationController?.pushViewController(vc, animated: true)
+//        let
+//        letnavig
+    }
+    
+
 
     /*
     // Override to support conditional editing of the table view.
