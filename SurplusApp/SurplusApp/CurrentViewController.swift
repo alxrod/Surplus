@@ -9,7 +9,10 @@
 import UIKit
 
 class CurrentViewController: UIViewController {
-
+    
+    let defaults = UserDefaults.standard
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: false)

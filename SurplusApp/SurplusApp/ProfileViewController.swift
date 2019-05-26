@@ -7,8 +7,38 @@
 //
 
 import UIKit
+import LinkKit
 
 class ProfileViewController: UIViewController {
+    let pc = PlaidController()
+    let defaults = UserDefaults.standard
+    var bankingToken: String? {
+        didSet {
+            guard let pub_token = bankingToken else {return}
+            pc.get_access_tok(public_token: pub_token) { (json, error) in
+                print("Access token: \(json) error: \(error?.localizedDescription)")
+                self.accessToken = json
+                
+            }
+        }
+    }
+    var accessToken: String? {
+        didSet {
+            guard let ac_token = accessToken else {return}
+            let userID = defaults.object(forKey: "userID")
+            
+            let fc = FirebaseController()
+            guard let uid = userID as? String else {return}
+            fc.setBankingToken(bankingToken: ac_token, userID: uid)
+            
+            pc.get_transcations(access_token: ac_token) { (transactions, error) in
+                print("donza")
+                print(transactions)
+            }
+            
+            
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +47,17 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func authenticateCard(_ sender: Any) {
+        let linkConfiguration = PLKConfiguration(key: "a5c0d06d29cd2debdc3167acb3457d", env: .sandbox, product: [.auth, .transactions])
+        linkConfiguration.clientName = "Surplus"
+        let linkViewDelegate = self
+        let linkViewController = PLKPlaidLinkViewController(configuration:
+            linkConfiguration, delegate: linkViewDelegate)
+        if (UI_USER_INTERFACE_IDIOM() == .pad) {
+            linkViewController.modalPresentationStyle = .formSheet;
+        }
+        
+        present(linkViewController, animated: true)
+        
     }
     
     /*
@@ -32,7 +73,7 @@ class ProfileViewController: UIViewController {
 }
 
 
-extension ViewController : PLKPlaidLinkViewDelegate {
+extension ProfileViewController : PLKPlaidLinkViewDelegate {
     func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didSucceedWithPublicToken publicToken: String, metadata: [String : Any]?) {
         dismiss(animated: true) {
             //            store token or whatever
