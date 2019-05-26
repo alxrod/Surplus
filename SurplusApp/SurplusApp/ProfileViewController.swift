@@ -9,9 +9,15 @@
 import UIKit
 import LinkKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var userName: UILabel!
+    @IBOutlet var userName: UILabel!
+    
+    @IBOutlet var tableView: UITableView!
+    
+    @IBOutlet var totalContrib: UILabel!
+    
+    var transactionsTable = [Transaction]()
     
     
     let pc = PlaidController()
@@ -42,16 +48,22 @@ class ProfileViewController: UIViewController {
                     var prices: [Double] = []
                     for (key, value) in transactions{
                         prices.append(value)
+                        var transaction = Transaction(name: key, amount: value)
+                        self.transactionsTable.append(transaction)
+                        
                     }
+                    self.tableView.reloadData()
                     var sum = 0.0
                     for price in prices{
-                        let decimal = Double(price - floor(price))
-                        let multiplier = 0.1*floor(decimal / 0.1)
-                        sum = sum + (0.1-(decimal - multiplier))
+//                        let decimal = Double(price - floor(price))
+//                        let multiplier = 0.1*floor(decimal / 0.1)
+                        sum += price * 0.01
+//                        sum = sum + (0.1-(decimal - multiplier))
                     }
                     let userID = self.defaults.object(forKey: "userID") as! String?
                     if let userID = userID{
                         self.fb.updateTotalContrib(userID: userID, donation: Float(sum))
+                        self.totalContrib.text = "$\(round(100*sum)/100)"
                     }
                 }
             }
@@ -71,7 +83,14 @@ class ProfileViewController: UIViewController {
                 }
             }
             self.userName.text = userID as! String
+            fb.getBankingToken(userID: userID as! String) { (token) in
+                self.accessToken = token
+            }
+            
+//            
         }
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -88,8 +107,11 @@ class ProfileViewController: UIViewController {
     }
     
 
-    @IBAction func logout(_ sender: Any) {
+    
+    @IBAction func logOut(_ sender: Any) {
+        print("Trying to sign out")
         fb.signOut()
+        
     }
     
     
@@ -116,6 +138,22 @@ class ProfileViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Transaction", for: indexPath) as? TransactionCell else {
+            fatalError("Unable to dequeue ProjectCell")
+        }
+        let transaction = transactionsTable[indexPath.item]
+        cell.nameField.text = transaction.name
+        cell.totalField.text = "Total: $\(String(transaction.amount))"
+        cell.donationField.text = "Donation: $\(transaction.amount * 0.05)"
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return transactionsTable.count
+    }
 
 }
 

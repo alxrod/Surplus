@@ -13,10 +13,11 @@ class CurrentViewController: UIViewController, MultiProgressViewDataSource {
     
     let defaults = UserDefaults.standard
     @IBOutlet var projectImage: UIImageView!
+    @IBOutlet var progressView: UIProgressView!
+    @IBOutlet var timerLabel: UILabel!
     
     @IBOutlet var projectNameField: UILabel!
     @IBOutlet var projectDescriptField: UITextView!
-    @IBOutlet var progressView: MultiProgressView!
     
     let fc = FirebaseController()
     var project_name = ""
@@ -25,18 +26,41 @@ class CurrentViewController: UIViewController, MultiProgressViewDataSource {
     var project_total_contrib = Float(0)
     var user_contrib = Float(0)
     
+//    var timer = Timer()
+//    var timeRemaining = 10000
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: false)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(profile))
+        progressView.transform = progressView.transform.scaledBy(x: 1, y: 2)
+        
+//        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,      selector: #selector(timerRunning), userInfo: nil, repeats: true)
+        
+        
+        
+        let buttonIcon = UIImage(named: "account")
+        
+        let leftBarButton = UIBarButtonItem(title: "Profile", style: UIBarButtonItem.Style.done, target: self, action: #selector(profile))
+        leftBarButton.image = buttonIcon
+        leftBarButton.tintColor = UIColor(hex:"587498")
+        
+        self.navigationItem.leftBarButtonItem = leftBarButton
+
+        
     
-        
-        progressView.dataSource = self
-        progressView.lineCap = .round
-        progressView.cornerRadius = 6.25
-        
-        
+        self.tabBarController?.tabBar.backgroundColor = UIColor(hex:"587498")
+        self.tabBarController?.tabBar.isTranslucent = false
+//        progressView.dataSource = self
+//        progressView.lineCap = .round
+//        progressView.cornerRadius = 6.25
+//
+        projectImage.layer.borderWidth = 1.0
+        projectImage.layer.masksToBounds = false
+        projectImage.layer.borderColor = UIColor.white.cgColor
+        projectImage.layer.cornerRadius = projectImage.frame.size.width / 2
+        projectImage.clipsToBounds = true
         
         
         
@@ -55,15 +79,26 @@ class CurrentViewController: UIViewController, MultiProgressViewDataSource {
                 self.project_description = descript!
                 self.projectDescriptField.text? = self.project_description
             }
+            self.fc.getActiveImage(projectID: project_id) { (urlS) in
+               
+                if let urlString = urlS {
+                    print("Loaidng url")
+                    if let url = URL(string: urlString) {
+                        self.projectImage.load(url: url)
+                    }
+                }
+            }
             self.fc.getTotalGoal(projectID: project_id) { (total) in
                 self.project_goal = total!
+                print ("Empty goal \(total!)" )
                 self.fc.getCurrentRaised(projectID: project_id) { (raised) in
                     self.project_total_contrib = raised!
                     self.fc.getTotalContrib(userID: uid) { (raised) in
                         self.user_contrib = raised!
                         print("How big? \(self.user_contrib/self.project_goal)")
-                        UIView.animate(withDuration: 0.2) {
-                            self.animateSetProgress(self.progressView, firstProgress: self.user_contrib/self.project_goal, secondProgress: self.project_total_contrib/self.project_goal-(self.user_contrib/self.project_goal))
+                        UIView.animate(withDuration: 0.7) {
+                            self.progressView.setProgress(self.user_contrib/self.project_goal, animated: true)
+                            
                         }
                         
                     }
@@ -100,7 +135,7 @@ class CurrentViewController: UIViewController, MultiProgressViewDataSource {
         let sectionView = ProgressViewSection()
         switch section {
         case 0:
-            sectionView.backgroundColor = .cyan
+            sectionView.backgroundColor = UIColor(hex:"587498")
         case 1:
             sectionView.backgroundColor = .blue
         default:

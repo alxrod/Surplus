@@ -24,6 +24,7 @@ class ExploreTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
         self.tabBarController?.tabBar.isHidden = false
+        
     }
 
     // MARK: - Table view data source

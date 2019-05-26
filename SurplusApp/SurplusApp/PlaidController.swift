@@ -136,7 +136,7 @@ class PlaidController {
                 }
                 
                 print("parsing finished")
-                print("Sucess rate \(success/total)")
+//                print("Sucess rate \(success/total)")
                 completion(transactions,nil)
                 
                 //                        completion(token,nil)

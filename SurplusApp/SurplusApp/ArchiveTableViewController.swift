@@ -16,6 +16,8 @@ class ArchiveTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.backgroundColor = UIColor(hex:"587498")
+        self.tabBarController?.tabBar.isTranslucent = false
 
         guard let uid = defaults.object(forKey: "userID") as? String else {return}
             print("Starting")
