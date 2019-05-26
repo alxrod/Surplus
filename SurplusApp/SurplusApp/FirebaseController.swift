@@ -257,7 +257,7 @@ class FirebaseController {
         let postRef = Database.database().reference(withPath: "projects/\(projectID)")
         postRef.observeSingleEvent(of: .value, with: { (snapshot) in
             let postDict = snapshot.value as? NSDictionary
-            let name = name?["name"] as? String
+            let name = postDict?["name"] as? String
             if let name = name{
                 completion(name)
             }
