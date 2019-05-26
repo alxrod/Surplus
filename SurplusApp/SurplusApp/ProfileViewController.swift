@@ -30,3 +30,44 @@ class ProfileViewController: UIViewController {
     */
 
 }
+
+
+extension ViewController : PLKPlaidLinkViewDelegate {
+    func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didSucceedWithPublicToken publicToken: String, metadata: [String : Any]?) {
+        dismiss(animated: true) {
+            //            store token or whatever
+            print("Successfully linked account!\npublicToken: \(publicToken)\nmetadata: \(metadata ?? [:]))")
+            self.handleSuccessWithToken(publicToken: publicToken, metadata: metadata)
+        }
+    }
+    
+    func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didExitWithError error: Error?, metadata: [String : Any]?) {
+        dismiss(animated: true) {
+            if let error = error {
+                print("Failed to link account due to:\(error.localizedDescription)\nmetadata: \(metadata ?? [:])")
+                self.handleError(error: error, metadata: metadata)
+            } else {
+                print("Plaid link exited with metadata: \(metadata ?? [:])")
+                self.handleExitWithMetadata(metadata: metadata)
+            }
+        }
+    }
+    
+    func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didHandleEvent event: String, metadata: [String : Any]?) {
+        print("Link event: \(event)\nmetadata: \(metadata ?? [:])")
+    }
+    
+    func handleError(error: Error, metadata:  [String : Any]?) {
+        
+    }
+    
+    func handleSuccessWithToken(publicToken: String, metadata: [String : Any]?) {
+        bankingToken = publicToken
+        print("here we go finally: \(bankingToken)")
+        
+    }
+    
+    func handleExitWithMetadata(metadata: [String : Any]?) {
+        
+    }
+}
