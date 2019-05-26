@@ -27,9 +27,9 @@ class FirebaseController {
                             let userRef = Database.database().reference(withPath: "users")
                             let userID = self.defaults.object(forKey: "userID") as! String?
                             if let userID = userID{
-                                userRef.child("/\(userID)/lifetimeContrib").setValue(0)
-                                userRef.child("/\(userID)/numSuccess").setValue(0)
-                                userRef.child("/\(userID)/totalContrib").setValue(0)
+                                userRef.child("\(userID)/lifetimeContrib").setValue(0)
+                                userRef.child("\(userID)/numSuccess").setValue(0)
+                                userRef.child("\(userID)/totalContrib").setValue(0)
 
                             }
                         }
