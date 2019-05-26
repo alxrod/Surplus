@@ -13,24 +13,30 @@ import FirebaseDatabase
 class FirebaseController {
     
     var ref: DatabaseReference!
-    
+    let defaults = UserDefaults.standard
+
     func createUser(email: String, password: String){
         
         Auth.auth().createUser(withEmail: email, password: password){authResult, error in
             if let error = error{
                 
             }else{
-                
+                self.loginUser(email: email, password: password)
             }
         }
         
     }
     
     func loginUser(email: String, password: String){
-        
+       
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
             guard let strongSelf = self else { return }
-            // ...
+            if let user = user{
+                self?.defaults.set(user.user.uid, forKey: "userID")
+            }else{
+                print(error)
+            }
+            
         }
         
     }
@@ -38,6 +44,7 @@ class FirebaseController {
     func signOut(){
         do {
             try Auth.auth().signOut()
+            self.defaults.set(nil, forKey: "userID")
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
