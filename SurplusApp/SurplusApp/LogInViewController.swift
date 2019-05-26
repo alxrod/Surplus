@@ -15,11 +15,20 @@ class LogInViewController: UIViewController {
     
     let fb = FirebaseController()
     let defaults = UserDefaults.standard
+    var skip = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
+        let userID = defaults.object(forKey: "userID")
+        print(userID)
+        if userID != nil{
+            self.view.isHidden = true
+            print("Just waiting on segue")
+            skip = true
+            
+        }
         
         
         // Do any additional setup after loading the view.
@@ -28,12 +37,13 @@ class LogInViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        let userID = defaults.object(forKey: "userID")
-        print(userID)
-        if userID != nil{
-            self.view.isHidden = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if (skip) {
             performSegue(withIdentifier: "logInSegue", sender: nil)
         }
+        
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {

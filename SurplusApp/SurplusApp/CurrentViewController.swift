@@ -13,6 +13,8 @@ class CurrentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: false)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(profile))
+        
 //        self.tabBarController?.addChild(<#T##childController: UIViewController##UIViewController#>)
         print (self.tabBarController)
 
@@ -25,6 +27,11 @@ class CurrentViewController: UIViewController {
 //        self.tabBarController?.tabBar.isHidden = false
     }
     
+    
+    @objc func profile() {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController else {return}
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
     /*
     // MARK: - Navigation

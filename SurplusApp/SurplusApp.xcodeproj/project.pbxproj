@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B415EA04229A47EF0062C3A3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B415EA03229A47EF0062C3A3 /* ProfileViewController.swift */; };
 		B44D408E2299A4CD003A4178 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D408D2299A4CD003A4178 /* AppDelegate.swift */; };
 		B44D40902299A4CD003A4178 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44D408F2299A4CD003A4178 /* ViewController.swift */; };
 		B44D40932299A4CE003A4178 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B44D40912299A4CE003A4178 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		1291116916C87BD3B5F7C39E /* Pods-SurplusApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SurplusApp.release.xcconfig"; path = "Target Support Files/Pods-SurplusApp/Pods-SurplusApp.release.xcconfig"; sourceTree = "<group>"; };
 		1524BD1119D63CF3A5AEBA8F /* Pods-SurplusApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SurplusApp.debug.xcconfig"; path = "Target Support Files/Pods-SurplusApp/Pods-SurplusApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7314C372E6488A485CBB080C /* Pods_SurplusApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SurplusApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B415EA03229A47EF0062C3A3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B44D408A2299A4CD003A4178 /* SurplusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SurplusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B44D408D2299A4CD003A4178 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B44D408F2299A4CD003A4178 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				B44D408F2299A4CD003A4178 /* ViewController.swift */,
 				B44D40AA2299F87B003A4178 /* StripeController.swift */,
 				B44D40912299A4CE003A4178 /* Main.storyboard */,
+				B415EA03229A47EF0062C3A3 /* ProfileViewController.swift */,
 				B44D40C6229A3023003A4178 /* MainTabBarController.swift */,
 				B44D40B8229A18D0003A4178 /* ArchiveTableViewController.swift */,
 				B44D40B6229A173B003A4178 /* AnalyticsViewController.swift */,
@@ -305,6 +308,7 @@
 				B44D40A42299ADBD003A4178 /* PlaidController.swift in Sources */,
 				B44D40B5229A16BA003A4178 /* LogInViewController.swift in Sources */,
 				B44D40B3229A11FD003A4178 /* ExploreTableViewController.swift in Sources */,
+				B415EA04229A47EF0062C3A3 /* ProfileViewController.swift in Sources */,
 				B44D40A82299AE0A003A4178 /* secrets.swift in Sources */,
 				B44D40902299A4CD003A4178 /* ViewController.swift in Sources */,
 				B44D40C3229A2AB8003A4178 /* FirebaseController.swift in Sources */,
