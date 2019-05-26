@@ -21,20 +21,34 @@ class FirebaseController {
             if let error = error{
                 
             }else{
-                self.loginUser(email: email, password: password)
+                self.loginUser(email: email, password: password) { (state) in
+                    if let state = state{
+                        if state == true{
+                            let userRef = Database.database().reference(withPath: "users")
+                            let userID = self.defaults.object(forKey: "userID") as! String?
+                            if let userID = userID{
+                                userRef.child("/\(userID)/lifetimeContrib").setValue(0)
+                                userRef.child("/\(userID)/numSuccess").setValue(0)
+                                userRef.child("/\(userID)/totalContrib").setValue(0)
+
+                            }
+                        }
+                    }
+                }
             }
         }
         
     }
     
-    func loginUser(email: String, password: String){
+    func loginUser(email: String, password: String, completion: @escaping (Bool?) -> Void ){
        
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
             guard let strongSelf = self else { return }
             if let user = user{
                 self?.defaults.set(user.user.uid, forKey: "userID")
+                completion(true)
             }else{
-                print(error)
+                completion(false)
             }
             
         }
@@ -197,7 +211,7 @@ class FirebaseController {
         })
     }
     
-    func createProject(charityID: String, summary: String, description: String, imageURL: String, totalGoal: Float){
+    func createProject(charityID: String, summary: String, description: String, imageURL: String, totalGoal: Float, name: String){
         let projectID = UUID()
         let postRef = Database.database().reference(withPath: "projects/\(projectID)")
         postRef.child("charityID").setValue(charityID)
@@ -207,6 +221,7 @@ class FirebaseController {
         postRef.child("totalGoal").setValue(totalGoal)
         postRef.child("currentRaised").setValue(0)
         postRef.child("isFunded").setValue(false)
+        postRef.child("name").setValue(name)
     }
     
     func updateProjectBackers(projectID: String, backerID: String){
@@ -238,7 +253,19 @@ class FirebaseController {
         
     }
     
-    
+    func getName(projectID: String, completion: @escaping (String?)-> Void){
+        let postRef = Database.database().reference(withPath: "projects/\(projectID)")
+        postRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let postDict = snapshot.value as? NSDictionary
+            let name = name?["name"] as? String
+            if let name = name{
+                completion(name)
+            }
+            else{
+                completion("No project name")
+            }
+        })
+    }
     
     func getSummary(projectID: String, completion: @escaping (String?)-> Void){
         let postRef = Database.database().reference(withPath: "projects/\(projectID)")
