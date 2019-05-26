@@ -1,5 +1,5 @@
 //
-//  ExploreTableViewController.swift
+//  ArchiveTableViewController.swift
 //  SurplusApp
 //
 //  Created by Alex Rodriguez on 5/25/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExploreTableViewController: UITableViewController {
+class ArchiveTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,12 +18,6 @@ class ExploreTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-        self.tabBarController?.tabBar.isHidden = false
     }
 
     // MARK: - Table view data source
